@@ -4,7 +4,6 @@
  ┣ 📂 anexos  
 
 
-⚙️Pautas del trabajo práctico
 📝Enunciado
 
 💻Imaginá que estás diseñando un sistema de gestión para una biblioteca (préstamo de libros, registro de socios, devoluciones, etc.).
