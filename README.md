@@ -66,13 +66,6 @@ Funciones
 Ejemplo en código [Listar libro por ID](src/controller/libro_controller.py)
 
 
-@libro_bp.route("/<int:id>", methods=["GET"])
-@requiere_token
-def obtener_libro(id):
-    libro = service.obtener_por_id(id)
-    return jsonify(libro) if libro else (jsonify({"error": "No encontrado"}), 404)
-
-
 Capa de lógica de negocio (src/service)
 
 - Esta capa es la que contiene las reglas de negocio, define como funciona el sistema, y decide que hacer
@@ -88,12 +81,6 @@ eliminar un atributo de una entidad, estaría rompiendo la integridad referencia
 
 Ejemplo en código [Crear libro](src/service/libro_service.py)
 
-def crear_libro(self, data):
-    # Validaciones de negocio
-    if not data.get("titulo"):
-        raise ValueError("El título es obligatorio")
-    return self.repo.guardar(data)
-
 
 Capa de acceso a datos (src/repository)
 
@@ -108,10 +95,6 @@ Funciones
 
 Ejemplo en código [Guardar libro](src/repository/libro_repository.py)
 
-
-def guardar(self, libro):
-    self.libros.append(libro)
-    return libro
 
 
 
