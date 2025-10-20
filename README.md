@@ -21,7 +21,7 @@
 
 - Python (3.12.4) #Como lenguaje de programación
 - Flask (3.0.3) #Para backend
-- UML #Para diseñar los diagramas estos se podrán ver en la carpeta documentos
+- UML #Para diseñar los diagramas estos se podrán ver en la carpeta anexos
 - Postman #Para test de endpoints y autorización a través de token
 
 ⚙️Instalación
