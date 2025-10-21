@@ -1,0 +1,37 @@
+1. Capa de Presentación (Interfaz de Usuario)
+Responsabilidad: Manejar la interacción con el usuario (Socios y Bibliotecarios), mostrar información y capturar entradas.
+
+Componentes:
+
+Módulo de Interfaz Web/Desktop: Vistas y controladores para los formularios de gestión (Préstamos, Pagos, Libros) y el login.
+
+Módulo de Autenticación/Acceso: Gestiona la presentación de la lógica de inicio de sesión (sesion(email: str, password: str): void) para el componente Rol.
+
+2. Capa de Lógica de Negocio (Business Logic Layer - BLL)
+Responsabilidad: Contener todas las reglas de negocio del dominio (los métodos de las clases) y coordinar el flujo de trabajo. Esta capa es el "corazón" del sistema.
+
+Componentes (basados en las clases del dominio):
+
+Subsistema de Gestión de Usuarios: Controla la lógica relacionada con Socio y Bibliotecario (registro, roles, información de contacto).
+
+Subsistema de Préstamos y Devoluciones: Implementa las reglas de Prestamo y Libro. Contiene métodos clave como solicitarPrestamo, otorgarPrestamo, prestarLibro, devolverLibro y verifica el estado (estado: enum).
+
+Subsistema de Catálogo: Gestiona la información de Libro y Autor.
+
+Subsistema de Finanzas/Pagos: Contiene la lógica para Pago (realizarPago, verificarPago, efectuarPago) y el control de multas/montos.
+
+3. Capa de Acceso a Datos (Data Access Layer - DAL)
+Responsabilidad: Aislar la Lógica de Negocio de la tecnología de persistencia (base de datos). Se encarga de las operaciones CRUD (Crear, Leer, Actualizar, Borrar).
+
+Componentes:
+
+Repositorios de Entidades: Un componente por cada entidad principal (Rol, Socio, Bibliotecario, Libro, Autor, Prestamo, Pago). Estos componentes se encargan de traducir las solicitudes de la BLL en consultas a la base de datos y viceversa.
+
+Módulo de Conexión a Base de Datos: Maneja la conexión física.
+
+4. Capa de Persistencia (Base de Datos)
+Responsabilidad: Almacenar de forma fiable todos los datos del sistema.
+
+Componente:
+
+Esquema de Base de Datos Relacional: El esquema se modelaría directamente a partir de las clases y sus relaciones (tablas para Rol, Socio, Bibliotecario, Libro, etc.).
