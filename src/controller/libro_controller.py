@@ -1,29 +1,35 @@
-from flask import Blueprint, jsonify, request
-from src.seguridad.auth import requiere_token
-from src.service.libro_service import LibroService
+from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 
-libro_bp = Blueprint("libros", __name__)
-service = LibroService()
+def crear_libro_controller(libro_service):
+    libro_bp = Blueprint("libro_bp", __name__)
 
-@libro_bp.route("/", methods=["GET"])
-@requiere_token
-def listar_libros():
-    return jsonify(service.obtener_todos())
+    @libro_bp.route("/libros", methods=["POST"])
+    @jwt_required()
+    def crear():
+        data = request.get_json()
+        return jsonify(libro_service.crear(data)), 201
 
-@libro_bp.route("/<int:id>", methods=["GET"])
-@requiere_token
-def obtener_libro(id):
-    libro = service.obtener_por_id(id)
-    return jsonify(libro) if libro else (jsonify({"error": "No encontrado"}), 404)
+    @libro_bp.route("/libros", methods=["GET"])
+    def listar():
+        return jsonify(libro_service.listar()), 200
 
-@libro_bp.route("/", methods=["POST"])
-@requiere_token
-def crear_libro():
-    data = request.get_json()
-    nuevo = service.crear_libro(data)
-    return jsonify(nuevo), 201
+    @libro_bp.route("/libros/<int:id_libro>/prestar", methods=["POST"])
+    @jwt_required()
+    def prestar(id_libro):
+        res = libro_service.prestar(id_libro)
+        if res == "YA_PRESTADO":
+            return jsonify({"error": "Libro ya prestado"}), 400
+        if res is None:
+            return jsonify({"error": "Libro no encontrado"}), 404
+        return jsonify(res), 200
 
-@libro_bp.route("/<int:id>", methods=["DELETE"])
-@requiere_token
-def eliminar_libro(id):
-    return jsonify(service.eliminar_libro(id))
+    @libro_bp.route("/libros/<int:id_libro>/devolver", methods=["POST"])
+    @jwt_required()
+    def devolver(id_libro):
+        res = libro_service.devolver(id_libro)
+        if res is None:
+            return jsonify({"error": "Libro no encontrado"}), 404
+        return jsonify(res), 200
+
+    return libro_bp

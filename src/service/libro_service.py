@@ -1,25 +1,29 @@
-from src.dto.libro_dto import LibroDTO
-from src.repository.libro_repository import LibroRepository
-from src.model.libro import Libro
+from dto.libro_dto import LibroDTO
+from model.libro import Libro, EstadoLibro
 
 class LibroService:
-    def __init__(self):
-        self.repository = LibroRepository()
+    def __init__(self, repo):
+        self.repo = repo
 
-    def obtener_todos(self):
-        return [LibroDTO(l.id, l.titulo, l.autor).to_dict() for l in self.repository.find_all()]
+    def crear(self, data):
+        libro = Libro(id_libro=data["id_libro"], titulo=data["titulo"], isbn=data.get("isbn"), autores=data.get("autores"))
+        self.repo.save(libro)
+        return LibroDTO(libro).to_dict()
 
-    def obtener_por_id(self, id):
-        libro = self.repository.find_by_id(id)
-        if libro:
-            return LibroDTO(libro.id, libro.titulo, libro.autor).to_dict()
-        return None
+    def listar(self):
+        return [LibroDTO(l).to_dict() for l in self.repo.find_all()]
 
-    def crear_libro(self, data):
-        nuevo = Libro(id=len(self.repository.libros)+1, titulo=data["titulo"], autor=data["autor"])
-        self.repository.save(nuevo)
-        return LibroDTO(nuevo.id, nuevo.titulo, nuevo.autor).to_dict()
+    def prestar(self, id_libro):
+        libro = self.repo.find_by_id(id_libro)
+        if not libro:
+            return None
+        if libro.estado == EstadoLibro.PRESTADO:
+            return "YA_PRESTADO"
+        libro.estado = EstadoLibro.PRESTADO
+        return LibroDTO(libro).to_dict()
 
-    def eliminar_libro(self, id):
-        self.repository.delete(id)
-        return {"mensaje": f"Libro con id {id} eliminado"}
+    def devolver(self, id_libro):
+        libro = self.repo.find_by_id(id_libro)
+        if not libro: return None
+        libro.estado = EstadoLibro.DISPONIBLE
+        return LibroDTO(libro).to_dict()
