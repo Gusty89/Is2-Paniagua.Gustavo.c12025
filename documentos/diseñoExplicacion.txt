@@ -1,3 +1,10 @@
+Presentación del proyecto
+
+- En este proyecto, decidí utilizar una arquitectura en capas, ya que había trabajado en otra materia con esta misma arquitectura, la ventaja que encuentro es tener todo bien estructurado, y bien separado en responsabilidades. 
+
+- Las tres capas (presentación, lógica de negocio, capa de acceso a datos/capa de persistencia de datos) se explican en detalle:
+
+
 1. Capa de Presentación (Interfaz de Usuario)
 Responsabilidad: Manejar la interacción con el usuario (Socios y Bibliotecarios), mostrar información y capturar entradas.
 
