@@ -1,5 +1,5 @@
-from dto.prestamo_dto import PrestamoDTO
-from model.prestamo import Prestamo
+from src.dto.prestamo_dto import PrestamoDTO
+from src.model.prestamo import Prestamo
 
 class PrestamoService:
     def __init__(self, repo_prestamo, repo_libro, repo_socio):

@@ -1,5 +1,5 @@
-from dto.pago_dto import PagoDTO
-from model.pago import Pago
+from src.dto.pago_dto import PagoDTO
+from src.model.pago import Pago
 
 class PagoService:
     def __init__(self, repo_pago, repo_socio):

@@ -1,5 +1,5 @@
-from dto.libro_dto import LibroDTO
-from model.libro import Libro, EstadoLibro
+from src.dto.libro_dto import LibroDTO
+from src.model.libro import Libro, EstadoLibro
 
 class LibroService:
     def __init__(self, repo):

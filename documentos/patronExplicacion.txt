@@ -1,0 +1,7 @@
+#ELegí el patrón de diseño repository (repository pattern), como patrón de diseño estructural, ya que me permite 
+abtraer la lógica de acceso a datos de la lógica de negocios, gestiona todas las operaciones de CRUD, 
+hace que la capa Service interactúe con los objetos de usuario, sin saber si están almacenados en memoria, 
+una base de datos real(como puede ser Postgres SQL o MySQL), o incluso en la nube (cloud). Además, es una especie 
+de mediador entre el dominio, y la fuente de datos (DB). Otra propiedad con la que cuenta este patrón, es su 
+flexibilidad al cambio, ya que si se decide cambiar la forma en que almacenamos los datos, solo tendríamos que 
+enfocar nuestros esfuerzos en la capa repository, y esto no afectaría directamente a nuestra capa de servicio.

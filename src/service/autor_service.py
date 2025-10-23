@@ -1,5 +1,5 @@
-from dto.autor_dto import AutorDTO
-from model.autor import Autor
+from src.dto.autor_dto import AutorDTO
+from src.model.autor import Autor
 
 class AutorService:
     def __init__(self, repo):
