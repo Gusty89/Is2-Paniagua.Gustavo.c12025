@@ -10,7 +10,7 @@
 
 1. Identificá las tres capas principales del sistema (presentación, lógica de negocio, datos) y escribí qué tipo de funciones tendría cada una.
 
-- [Diseño Arquitectónico](anexos/Arquitectura_en_3_capas.png)
+- [Diseño Arquitectónico](anexos/enlaceArquitectura.txt)
 - [Explicación de las funciones de la arquitectura en detalle](documentos/diseñoExplicacion.txt)
 
 2. Elegí un problema sencillo del sistema (por ejemplo: acceso centralizado a la base de datos, control de usuarios o manejo de configuración) y explicá con tus palabras qué patrón de diseño podría ayudar a resolverlo (por ejemplo: Singleton, MVC, etc.).
@@ -50,7 +50,7 @@
 3. Se registra el socio/bibliotecario, esto va a depender el rol que le asignemos
 4. Luego en el buscador, pondremos esta ruta http://127.0.0.1:5000/auth/login con el método, en este caso de nuevo POST y send (envíar)
 5. Esto me genera un JSON con el token, para ser autorizado por cuestiones de seguridad
-6. [Capturas de test se encuentran en:](anexos)
+6. Los test con las capturas tomadas en postman se encuentran [Enlace de Capturas](anexos/enlaceModelosyTest.txt)
 
 > 💡 **Nota Importante:** Si bien está agregada la capa repository, decidí utilizar una lista genérica para pruebas
 con postman, a esta capa se la puede migrar con alembic a una BDD.

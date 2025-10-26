@@ -1,7 +1,7 @@
 from src.repository.bibliotecario_repository import BibliotecarioRepository
 from src.model.bibliotecario import Bibliotecario
 from flask_bcrypt import Bcrypt 
-from src.dto.bibliotecario_dto import BibliotecarioDTO # ⚠️ Descomentar esta línea
+from src.dto.bibliotecario_dto import BibliotecarioDTO
 
 class BibliotecarioService:
     """
@@ -14,7 +14,7 @@ class BibliotecarioService:
     def registrar(self, data):
         """Registra un nuevo bibliotecario hasheando su contraseña."""
         
-        # ⚠️ Validación: Asegurarse de que el email no esté duplicado antes de hashear
+        # Validación: Asegurarse de que el email no esté duplicado antes de hashear
         if self.repo.find_by_email(data["email"]):
              # Es buena práctica lanzar una excepción para que el controlador la capture
              raise ValueError("Ya existe un bibliotecario con este email.")
@@ -30,19 +30,19 @@ class BibliotecarioService:
             password=hashed_password, 
             direccion=data.get("direccion"),
             telefono=data.get("telefono"),
-            # 🐛 CORRECCIÓN CLAVE: NO pasar id_bibliotecario. El repositorio lo asignará.
+            # CORRECCIÓN CLAVE: NO pasar id_bibliotecario. El repositorio lo asignará.
             id_bibliotecario=None 
         )
         
         # El repositorio guarda el objeto y asigna el ID (auto-incremento)
         self.repo.save(bibliotecario)
         
-        # ✅ Optimización: Devolver el DTO del bibliotecario recién creado
+        # Optimización: Devolver el DTO del bibliotecario recién creado
         return BibliotecarioDTO(bibliotecario).to_dict() 
 
     def listar(self):
         """Lista todos los bibliotecarios y los mapea a DTOs."""
-        # 💡 Optimización: Mapear la lista completa a DTOs antes de devolverla
+        # Optimización: Mapear la lista completa a DTOs antes de devolverla
         return [BibliotecarioDTO(b).to_dict() for b in self.repo.find_all()]
 
     def get_by_id(self, id_bibliotecario):

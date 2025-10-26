@@ -10,13 +10,13 @@ def crear_autor_controller(autor_service: AutorService):
     autor_bp = Blueprint("autor_bp", __name__)
 
     # --- RUTA 1: POST / (Crear Autor) ---
-    # 🐛 CORRECCIÓN 1: Usar la ruta raíz '/'
+    # CORRECCIÓN 1: Usar la ruta raíz '/'
     @autor_bp.route("/", methods=["POST"])
     @jwt_required()
     def crear():
         data = request.get_json()
         
-        # 💡 MEJORA: Añadir manejo de errores
+        # MEJORA: Añadir manejo de errores
         try:
             # Asume que autor_service.crear devuelve un DTO
             return jsonify(autor_service.crear(data)), 201
@@ -29,7 +29,7 @@ def crear_autor_controller(autor_service: AutorService):
 
 
     # --- RUTA 2: GET / (Listar Autores) ---
-    # 🐛 CORRECCIÓN 2: Usar la ruta raíz '/'
+    # CORRECCIÓN 2: Usar la ruta raíz '/'
     # Nota: Esta ruta está abierta al público (sin @jwt_required())
     @autor_bp.route("/", methods=["GET"])
     def listar():

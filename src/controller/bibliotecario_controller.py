@@ -10,7 +10,7 @@ def crear_bibliotecario_controller(srv_bibliotecario: BibliotecarioService):
     bibliotecario_bp = Blueprint("bibliotecario_bp", __name__)
 
     # --- RUTA PROTEGIDA: Listar todos los Bibliotecarios ---
-    # 🐛 CORRECCIÓN 1: La ruta debe ser solo "/", asumiendo que el prefix en app.py es "/bibliotecarios"
+    # CORRECCIÓN 1: La ruta debe ser solo "/", asumiendo que el prefix en app.py es "/bibliotecarios"
     @bibliotecario_bp.route("/", methods=["GET"]) 
     @jwt_required()
     def listar_bibliotecarios():
@@ -23,7 +23,7 @@ def crear_bibliotecario_controller(srv_bibliotecario: BibliotecarioService):
         return jsonify(srv_bibliotecario.listar()), 200
 
     # --- RUTA PROTEGIDA: Registrar un nuevo Bibliotecario (solo por ADMIN) ---
-    # 🐛 CORRECCIÓN 2: La ruta debe ser solo "/", ya que crear recursos es la raíz del endpoint.
+    # CORRECCIÓN 2: La ruta debe ser solo "/", ya que crear recursos es la raíz del endpoint.
     @bibliotecario_bp.route("/", methods=["POST"])
     @jwt_required()
     def registrar_bibliotecario():
@@ -43,7 +43,7 @@ def crear_bibliotecario_controller(srv_bibliotecario: BibliotecarioService):
             nuevo_bibliotecario = srv_bibliotecario.registrar(data)
             return jsonify(nuevo_bibliotecario), 201
             
-        # 💡 MEJORA: Capturar ValueError si el servicio lo lanza (ej. email duplicado)
+        # MEJORA: Capturar ValueError si el servicio lo lanza (ej. email duplicado)
         except ValueError as e:
             return jsonify({"msg": str(e)}), 409 # 409 Conflict
         except Exception as e:

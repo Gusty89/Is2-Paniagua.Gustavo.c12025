@@ -15,6 +15,6 @@ def generar_token(subject_id: str, claims: Dict[str, Any]) -> str:
       Esto cumple con el requisito de que el 'Subject' debe ser una cadena.
     - claims (dict): El diccionario de datos adicionales, como el 'rol'.
     """
-    # 🛑 CORRECCIÓN: Usamos 'identity' para el subject (string) y 
+    # CORRECCIÓN: Usamos 'identity' para el subject (string) y 
     # 'additional_claims' para el resto del diccionario (el rol).
     return create_access_token(identity=subject_id, additional_claims=claims)

@@ -11,13 +11,13 @@ def crear_prestamo_controller(prestamo_service: PrestamoService):
     prestamo_bp = Blueprint("prestamo_bp", __name__)
 
     # --- RUTA 1: POST / (Crear Préstamo) ---
-    # 🐛 CORRECCIÓN 1: Usar la ruta raíz '/'
+    # CORRECCIÓN 1: Usar la ruta raíz '/'
     @prestamo_bp.route("/", methods=["POST"])
     @jwt_required()
     def crear():
         data = request.get_json()
         
-        # 💡 MEJORA 1: Manejo de errores de negocio
+        # MEJORA 1: Manejo de errores de negocio
         try:
             # Asume que prestamo_service.crear devuelve un DTO
             return jsonify(prestamo_service.crear(data)), 201
@@ -37,7 +37,7 @@ def crear_prestamo_controller(prestamo_service: PrestamoService):
 
 
     # --- RUTA 2: GET / (Listar Préstamos) ---
-    # 🐛 CORRECCIÓN 2: Usar la ruta raíz '/'
+    # CORRECCIÓN 2: Usar la ruta raíz '/'
     @prestamo_bp.route("/", methods=["GET"])
     @jwt_required()
     def listar():

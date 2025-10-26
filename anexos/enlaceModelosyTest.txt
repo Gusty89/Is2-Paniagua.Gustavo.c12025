@@ -1,0 +1,23 @@
+- Modelo de dominio conceptual
+https://drive.google.com/file/d/1T5qqsy3loM_V4MtcuJlP6kaZRjqJqLlu/view?usp=drive_link
+
+- Diagrama de clases
+https://drive.google.com/file/d/1pRkzvfp_eEbI8uNdEUZHZL7kLkBKQS60/view?usp=drive_link
+
+- Login de admin y generación de token
+https://drive.google.com/file/d/1YzDRip306DMtDuROGqleifXfL0f9YCzu/view?usp=drive_link
+
+- Acceso inválido de socios
+https://drive.google.com/file/d/10YMo-gjVpm3q7G7xLFErg75OJ8s0t9n2/view?usp=drive_link
+
+- Registro de admin y confirmación de registro
+https://drive.google.com/file/d/1GQip1FG7PzPsFgbBTOgLEzWyEPhP4bVJ/view?usp=drive_link
+
+- Registro de admin y validación que existe un registro
+https://drive.google.com/file/d/1EeVWxcuziW0TguHHCSeyleoLlv363c0R/view?usp=drive_link
+
+- Registro de socio y confirmación de registro
+https://drive.google.com/file/d/1IqNaFNPP68qPkbPc_e43nsjQjjGYbwy6/view?usp=drive_link
+
+- Registro de socio y validación que existe un registro
+https://drive.google.com/file/d/1oHBAErxOwW0ZFwCa04mu0NmQyYtqhDk0/view?usp=drive_link

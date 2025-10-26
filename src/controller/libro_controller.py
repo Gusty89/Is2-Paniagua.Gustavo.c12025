@@ -11,13 +11,13 @@ def crear_libro_controller(libro_service: LibroService):
     libro_bp = Blueprint("libro_bp", __name__)
 
     # --- RUTA 1: POST / (Crear Libro) ---
-    # 🐛 CORRECCIÓN 1: Usar la ruta raíz '/'
+    # CORRECCIÓN 1: Usar la ruta raíz '/'
     @libro_bp.route("/", methods=["POST"])
     @jwt_required()
     def crear():
         data = request.get_json()
         
-        # 💡 MEJORA 1: Manejo de errores (ej. ISBN duplicado, datos faltantes)
+        # MEJORA 1: Manejo de errores (ej. ISBN duplicado, datos faltantes)
         try:
             # Asume que libro_service.crear devuelve un DTO
             return jsonify(libro_service.crear(data)), 201
@@ -29,7 +29,7 @@ def crear_libro_controller(libro_service: LibroService):
 
 
     # --- RUTA 2: GET / (Listar Libros) ---
-    # 🐛 CORRECCIÓN 2: Usar la ruta raíz '/'
+    # CORRECCIÓN 2: Usar la ruta raíz '/'
     @libro_bp.route("/", methods=["GET"])
     def listar():
         # Asume que libro_service.listar devuelve una lista de DTOs
@@ -37,14 +37,14 @@ def crear_libro_controller(libro_service: LibroService):
 
 
     # --- RUTA 3: POST /<id_libro>/prestar (Prestar Libro) ---
-    # 🐛 CORRECCIÓN 3: Usar solo el segmento de la ruta, asumiendo /libros/{id}/prestar
+    # CORRECCIÓN 3: Usar solo el segmento de la ruta, asumiendo /libros/{id}/prestar
     @libro_bp.route("/<int:id_libro>/prestar", methods=["POST"])
     @jwt_required()
     def prestar(id_libro: int):
         data = request.get_json() or {} # Obtener datos (podría incluir id_socio)
         
         try:
-            # 💡 MEJORA 2: Pasar el ID de socio (o el token) para registrar el préstamo
+            # MEJORA 2: Pasar el ID de socio (o el token) para registrar el préstamo
             res = libro_service.prestar(id_libro, data.get('id_socio')) 
             return jsonify(res), 200
             
@@ -62,7 +62,7 @@ def crear_libro_controller(libro_service: LibroService):
 
 
     # --- RUTA 4: POST /<id_libro>/devolver (Devolver Libro) ---
-    # 🐛 CORRECCIÓN 4: Usar solo el segmento de la ruta
+    # CORRECCIÓN 4: Usar solo el segmento de la ruta
     @libro_bp.route("/<int:id_libro>/devolver", methods=["POST"])
     @jwt_required()
     def devolver(id_libro: int):

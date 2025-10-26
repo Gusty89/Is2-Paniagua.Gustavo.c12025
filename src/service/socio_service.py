@@ -13,7 +13,7 @@ class SocioService:
         """
         Registra un nuevo socio, hasheando la contraseña y verificando duplicidad de email.
         """
-        # ⚠️ OPTIMIZACIÓN 1: Verificar si el email ya existe
+        # OPTIMIZACIÓN 1: Verificar si el email ya existe
         if self.repo.find_by_email(data["email"]):
             raise ValueError("Ya existe un socio registrado con este email.")
 
@@ -58,7 +58,7 @@ class SocioService:
         """
         return [SocioDTO(s).to_dict() for s in self.repo.find_all()]
 
-    def get_by_id(self, id_socio: int) -> Optional[Socio]: # ✅ CORRECCIÓN AQUÍ: Cambiado de Sio a Socio
+    def get_by_id(self, id_socio: int) -> Optional[Socio]: 
         """
         Busca un socio por ID. Devuelve el objeto modelo.
         """

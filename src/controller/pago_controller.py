@@ -11,13 +11,13 @@ def crear_pago_controller(pago_service: PagoService):
     pago_bp = Blueprint("pago_bp", __name__)
 
     # --- RUTA 1: POST / (Crear Pago) ---
-    # 🐛 CORRECCIÓN 1: Usar la ruta raíz '/'
+    # CORRECCIÓN 1: Usar la ruta raíz '/'
     @pago_bp.route("/", methods=["POST"])
     @jwt_required()
     def crear():
         data = request.get_json()
         
-        # 💡 MEJORA 1: Manejo de errores de negocio
+        # MEJORA 1: Manejo de errores de negocio
         try:
             # Asume que pago_service.crear devuelve un DTO
             return jsonify(pago_service.crear(data)), 201
@@ -31,7 +31,7 @@ def crear_pago_controller(pago_service: PagoService):
 
 
     # --- RUTA 2: GET / (Listar Pagos) ---
-    # 🐛 CORRECCIÓN 2: Usar la ruta raíz '/'
+    # CORRECCIÓN 2: Usar la ruta raíz '/'
     @pago_bp.route("/", methods=["GET"])
     @jwt_required()
     def listar():
