@@ -24,12 +24,13 @@
 
 💻Tecnologías utilizadas
 
-- Python (3.12.4) #Como lenguaje de programación
-- Flask (3.0.3) #Para backend
-- Flask-JWT-Extended==4.6.0 #Para la generación de tokens de seguridad
-- Flask-Bcrypt==1.0.1 #Para hasheo de contraseñas
-- UML #Para diseñar los diagramas estos se podrán ver en la carpeta anexos
-- Postman #Para test de endpoints y autorización a través de token
+- Python (3.12.4) (como lenguaje de programación)
+- Flask (3.0.3) (para backend)
+- Flask-JWT-Extended==4.6.0 (para la generación de tokens de seguridad)
+- Flask-Bcrypt==1.0.1 (para hasheo de contraseñas)
+- UML (para diseñar los diagramas estos se podrán ver en la carpeta anexos)
+- Postman (para test de endpoints y autorización a través de token)
+- Unittest (para pruebas unitarias)
 
 ⚙️Instalación
 
@@ -54,11 +55,11 @@
 
 🔍Pruebas unitarias con unittest
 - Para realizar el test se agregó un archivo en la [capa service](src/service/test_auth_service.py), esto me sirve para validar que un usuario se ha logueado de manera correcta
-- Para la prueba se ha creado una carpeta [test] y dentro de ella un archivo [testSocio](src/test/testSocio.py), aquí comprobamos que lo que está en el [main](src/main.py) sea True para que cumpla con los valores esperados, eso nos devoverá OK. En caso contrario, nos mandará un FAIL y no pasará el test
+- Para la prueba se ha creado una carpeta Test y dentro de ella un archivo [testSocio](src/test/testSocio.py), aquí comprobamos que lo que está en el [main](src/main.py) sea True para que cumpla con los valores esperados, eso nos devoverá OK. En caso contrario, nos mandará un FAIL y no pasará el test
 
 🚀Ejecución del test
 - Para ejecutar el test, abriremos un terminal, y pondremos lo siguiente:
-- python -m unittest src.test.testSocio, lo ejecutaremos como módulo ya que dentro de [test] tenemos creado el [Paquete](src/test/__init__.py)
+- python -m unittest src.test.testSocio, lo ejecutaremos como módulo ya que dentro de test tenemos creado el [Paquete](src/test/__init__.py)
 
 
 > 💡 **Nota Importante:** Si bien está agregada la capa repository, decidí utilizar una lista genérica para pruebas
