@@ -12,3 +12,4 @@ class AutorService:
 
     def listar(self):
         return [AutorDTO(a).to_dict() for a in self.repo.find_all()]
+    

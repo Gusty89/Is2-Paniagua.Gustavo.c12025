@@ -77,5 +77,8 @@ app.register_blueprint(crear_prestamo_controller(srv_prestamo), url_prefix="/pre
 app.register_blueprint(crear_pago_controller(srv_pago), url_prefix="/pagos") # Usa prefijo
 app.register_blueprint(crear_bibliotecario_controller(srv_biblio), url_prefix="/bibliotecarios") # Usa prefijo
 
+#Test socio unittest
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -52,6 +52,15 @@
 5. Esto me genera un JSON con el token, para ser autorizado por cuestiones de seguridad
 6. Los test con las capturas tomadas en postman se encuentran [Enlace de Capturas](anexos/enlaceModelosyTest.txt)
 
+🔍Pruebas unitarias con unittest
+- Para realizar el test se agregó un archivo en la [capa service](src/service/test_auth_service.py), esto me sirve para validar que un usuario se ha logueado de manera correcta
+- Para la prueba se ha creado una carpeta [test] y dentro de ella un archivo [testSocio](src/test/testSocio.py), aquí comprobamos que lo que está en el [main](src/main.py) sea True para que cumpla con los valores esperados, eso nos devoverá OK. En caso contrario, nos mandará un FAIL y no pasará el test
+
+🚀Ejecución del test
+- Para ejecutar el test, abriremos un terminal, y pondremos lo siguiente:
+- python -m unittest src.test.testSocio, lo ejecutaremos como módulo ya que dentro de [test] tenemos creado el [Paquete](src/test/__init__.py)
+
+
 > 💡 **Nota Importante:** Si bien está agregada la capa repository, decidí utilizar una lista genérica para pruebas
 con postman, a esta capa se la puede migrar con alembic a una BDD.
 
